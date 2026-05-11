@@ -33,11 +33,12 @@ local ListTab = Window:CreateTab("명단✅️", 0)
 local LoopTab = Window:CreateTab("조지기🥵", 0)
 local AuraTab = Window:CreateTab("아우라💩", 0)
 local funTab = Window:CreateTab("찌끄레기😝", 0)
+local T1 = Window:CreateTab("AIPA🛠️", 0)
 local keybindTab = Window:CreateTab("설정👍", 0)
 --local CreditsTab = Window:CreateTab("나머지💀", 0)
 local DevTab = Window:CreateTab("잡기능🖕", 0)
 local RankTab = Window:CreateTab("제작자 친구🤩", 0)
-
+local T2 = Window:CreateTab("AIPA 2⚡", 0)
 
 
 Players = game:GetService("Players")
@@ -6132,6 +6133,128 @@ UtilityTab:CreateToggle({
         end)
     end,
 })
+
+T1:CreateSection("기능 1-25")
+T1:CreateSlider({Name = "Speed", Range = {16, 400}, Increment = 1, CurrentValue = 16, Callback = f_list[1]})
+T1:CreateSlider({Name = "Jump", Range = {50, 400}, Increment = 1, CurrentValue = 50, Callback = f_list[2]})
+T1:CreateSlider({Name = "Hip", Range = {0, 15}, Increment = 0.1, CurrentValue = 2, Callback = f_list[3]})
+T1:CreateButton({Name = "Inf Yield", Callback = f_list[4]})
+T1:CreateButton({Name = "Bright", Callback = f_list[5]})
+T1:CreateButton({Name = "Low GFX", Callback = f_list[6]})
+T1:CreateButton({Name = "Reset", Callback = f_list[7]})
+T1:CreateButton({Name = "FOV 120", Callback = f_list[8]})
+T1:CreateButton({Name = "Rejoin", Callback = f_list[9]})
+T1:CreateButton({Name = "Anti-AFK", Callback = f_list[10]})
+T1:CreateButton({Name = "Click TP", Callback = f_list[11]})
+T1:CreateToggle({Name = "Noclip", CurrentValue = false, Callback = f_list[12]})
+T1:CreateButton({Name = "Ghost", Callback = f_list[13]})
+T1:CreateButton({Name = "Server Hop", Callback = f_list[14]})
+T1:CreateButton({Name = "F3X", Callback = f_list[15]})
+T1:CreateButton({Name = "No Decal", Callback = f_list[16]})
+T1:CreateToggle({Name = "Spin", CurrentValue = false, Callback = f_list[17]})
+T1:CreateSlider({Name = "FPS", Range = {30, 360}, Increment = 10, CurrentValue = 60, Callback = f_list[18]})
+T1:CreateButton({Name = "Chat Spy", Callback = f_list[19]})
+T1:CreateButton({Name = "Cam ON", Callback = f_list[20]})
+T1:CreateButton({Name = "Cam OFF", Callback = f_list[21]})
+T1:CreateButton({Name = "No Lag", Callback = f_list[22]})
+T1:CreateButton({Name = "Hide UI", Callback = f_list[23]})
+T1:CreateButton({Name = "Show UI", Callback = f_list[24]})
+T1:CreateSlider({Name = "Head", Range = {1, 15}, Increment = 0.5, CurrentValue = 1, Callback = f_list[25]})
+
+
+T2:CreateSection("기능 26-50")
+T2:CreateButton({Name = "Bring All", Callback = f_list[26]})
+T2:CreateButton({Name = "Freeze All", Callback = f_list[27]})
+T2:CreateButton({Name = "Unfreeze", Callback = f_list[28]})
+T2:CreateButton({Name = "Clear Map", Callback = f_list[29]})
+T2:CreateButton({Name = "No Mass", Callback = f_list[30]})
+T2:CreateButton({Name = "Anti-Kick", Callback = f_list[31]})
+T2:CreateButton({Name = "Fly ON", Callback = f_list[32]})
+T2:CreateButton({Name = "Fly OFF", Callback = f_list[33]})
+T2:CreateSlider({Name = "G-Dist", Range = {15, 150}, Increment = 5, CurrentValue = 15, Callback = f_list[34]})
+T2:CreateToggle({Name = "Auto Loot", CurrentValue = false, Callback = f_list[35]})
+T2:CreateButton({Name = "ESP", Callback = f_list[36]})
+T2:CreateButton({Name = "No ESP", Callback = f_list[37]})
+T2:CreateButton({Name = "Sit", Callback = f_list[38]})
+T2:CreateToggle({Name = "Auto Jump", CurrentValue = false, Callback = f_list[39]})
+T2:CreateButton({Name = "Water Walk", Callback = f_list[40]})
+T2:CreateButton({Name = "Platform", Callback = f_list[41]})
+T2:CreateButton({Name = "TP Spawn", Callback = f_list[42]})
+T2:CreateButton({Name = "TP Secret", Callback = f_list[43]})
+T2:CreateButton({Name = "TP Void", Callback = f_list[44]})
+T2:CreateButton({Name = "Ragdoll", Callback = f_list[45]})
+T2:CreateButton({Name = "Kill", Callback = f_list[46]})
+T2:CreateButton({Name = "Grav Low", Callback = f_list[47]})
+T2:CreateButton({Name = "Grav High", Callback = f_list[48]})
+T2:CreateButton({Name = "Grav Reset", Callback = f_list[49]})
+T2:CreateButton({Name = "Exit", Callback = f_list[50]})
+local lp = game:GetService("Players").LocalPlayer
+local rs = game:GetService("RunService")
+local lt = game:GetService("Lighting")
+local t_s = {}
+
+local function g_hrp() return lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") end
+local function g_hum() return lp.Character and lp.Character:FindFirstChild("Humanoid") end
+
+local f_list = {}
+f_list[1] = function(v) if g_hum() then g_hum().WalkSpeed = v end end
+f_list[2] = function(v) if g_hum() then g_hum().JumpPower = v end end
+f_list[3] = function(v) if g_hum() then g_hum().HipHeight = v end end
+f_list[4] = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end
+f_list[5] = function() lt.Brightness = 2; lt.ClockTime = 14; lt.OutdoorAmbient = Color3.new(1,1,1) end
+f_list[6] = function() for _,v in pairs(game:GetDescendants()) do if v:IsA("BasePart") then v.Material = Enum.Material.SmoothPlastic end end end
+f_list[7] = function() if g_hum() then g_hum().Health = 0 end end
+f_list[8] = function() workspace.CurrentCamera.FieldOfView = 120 end
+f_list[9] = function() game:GetService("TeleportService"):Teleport(game.PlaceId, lp) end
+f_list[10] = function() lp.Idled:Connect(function() game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame) end) end
+f_list[11] = function() local m = lp:GetMouse() m.Button1Down:Connect(function() if game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then g_hrp().CFrame = CFrame.new(m.Hit.p + Vector3.new(0,3,0)) end end) end
+f_list[12] = function(v) t_s["NC"] = v end
+f_list[13] = function() if lp.Character then for _,v in pairs(lp.Character:GetDescendants()) do if v:IsA("BasePart") then v.Transparency = 0.5 end end end end
+f_list[14] = function() local s = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100")).data; for _, v in pairs(s) do if v.playing < v.maxPlayers and v.id ~= game.JobId then game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, v.id) end end end
+f_list[15] = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/dread-scripts/f3x/master/f3x.lua"))() end
+f_list[16] = function() for _,v in pairs(workspace:GetDescendants()) do if v:IsA("Decal") or v:IsA("Texture") then v:Destroy() end end end
+f_list[17] = function(v) t_s["SP"] = v end
+f_list[18] = function(v) setfpscap(v) end
+f_list[19] = function() if not _G.CS then _G.CS = true end end
+f_list[20] = function() workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable end
+f_list[21] = function() workspace.CurrentCamera.CameraType = Enum.CameraType.Custom end
+f_list[22] = function() settings().Rendering.QualityLevel = 1 end
+f_list[23] = function() game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.All, false) end
+f_list[24] = function() game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.All, true) end
+f_list[25] = function(v) if lp.Character:FindFirstChild("Head") then lp.Character.Head.Size = Vector3.new(v,v,v) end end
+f_list[26] = function() for _,p in pairs(game.Players:GetPlayers()) do if p ~= lp and p.Character then p.Character:MoveTo(g_hrp().Position) end end end
+f_list[27] = function() for _,p in pairs(game.Players:GetPlayers()) do if p ~= lp and p.Character then p.Character.HumanoidRootPart.Anchored = true end end end
+f_list[28] = function() for _,p in pairs(game.Players:GetPlayers()) do if p ~= lp and p.Character then p.Character.HumanoidRootPart.Anchored = false end end end
+f_list[29] = function() if workspace:FindFirstChild("GrabParts") then workspace.GrabParts:Destroy() end end
+f_list[30] = function() for _,v in pairs(lp.Character:GetDescendants()) do if v:IsA("BasePart") then v.Massless = true end end end
+f_list[31] = function() local mt = getrawmetatable(game); setreadonly(mt, false); local old = mt.__namecall; mt.__namecall = newcclosure(function(self, ...) if getnamecallmethod() == "Kick" then return nil end return old(self, ...) end) end
+f_list[32] = function() local b = Instance.new("BodyVelocity", g_hrp()); b.Name = "AFly"; b.Velocity = Vector3.new(0,0,0); b.MaxForce = Vector3.new(math.huge, math.huge, math.huge) end
+f_list[33] = function() if g_hrp():FindFirstChild("AFly") then g_hrp().AFly:Destroy() end end
+f_list[34] = function(v) if workspace:FindFirstChild("GrabRange") then workspace.GrabRange.Value = v end end
+f_list[35] = function(v) t_s["AL"] = v end
+f_list[36] = function() for _,p in pairs(game.Players:GetPlayers()) do if p ~= lp and p.Character then local h = Instance.new("Highlight", p.Character); h.FillColor = Color3.new(1,0,0) end end end
+f_list[37] = function() for _,v in pairs(workspace:GetDescendants()) do if v:IsA("Highlight") then v:Destroy() end end end
+f_list[38] = function() if g_hum() then g_hum().Sit = true end end
+f_list[39] = function(v) t_s["AJ"] = v end
+f_list[40] = function() local p = Instance.new("Part", workspace); p.Size = Vector3.new(2048, 1, 2048); p.Position = Vector3.new(0, -2, 0); p.Anchored = true; p.Transparency = 0.7 end
+f_list[41] = function() local p = Instance.new("Part", workspace); p.Size = Vector3.new(15, 1, 15); p.CFrame = g_hrp().CFrame * CFrame.new(0, -3.5, 0); p.Anchored = true end
+f_list[42] = function() g_hrp().CFrame = CFrame.new(0, 20, 0) end
+f_list[43] = function() g_hrp().CFrame = CFrame.new(999, 999, 999) end
+f_list[44] = function() g_hrp().CFrame = CFrame.new(g_hrp().Position.X, -500, g_hrp().Position.Z) end
+f_list[45] = function() if f_setragdoll then f_setragdoll(true) end end
+f_list[46] = function() g_hum().Health = 0 end
+f_list[47] = function() workspace.Gravity = 40 end
+f_list[48] = function() workspace.Gravity = 600 end
+f_list[49] = function() workspace.Gravity = 196.2 end
+f_list[50] = function() Rayfield:Destroy() end
+
+rs.Stepped:Connect(function()
+    pcall(function()
+        if t_s["SP"] and g_hrp() then g_hrp().CFrame *= CFrame.Angles(0, math.rad(20), 0) end
+        if t_s["AJ"] and g_hum() then g_hum().Jump = true end
+        if t_s["NC"] and lp.Character then for _, v in pairs(lp.Character:GetDescendants()) do if v:IsA("BasePart") then v.CanCollide = false end end end
+    end)
+end)
 
 
 -- ================== 모바일 TP (DevTab) ==================
